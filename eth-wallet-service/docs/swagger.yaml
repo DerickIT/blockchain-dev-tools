@@ -1,0 +1,175 @@
+basePath: /api/v1
+definitions:
+  services.BurnNFTRequest:
+    type: object
+  services.MultiSigTransferRequest:
+    type: object
+  services.WithdrawRequest:
+    type: object
+host: localhost:8080
+info:
+  contact: {}
+  description: This is a sample server for Ethereum wallet operations.
+  title: Ethereum Wallet Service API
+  version: "1.0"
+paths:
+  /eth/burn-nft:
+    post:
+      consumes:
+      - application/json
+      description: Burn (destroy) a specified NFT
+      parameters:
+      - description: NFT burn details
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/services.BurnNFTRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Burn an NFT
+      tags:
+      - ethereum
+  /eth/contract-balance:
+    get:
+      consumes:
+      - application/json
+      description: Get the balance of a specified contract address
+      parameters:
+      - description: Contract address
+        in: query
+        name: address
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Get the balance of a contract
+      tags:
+      - ethereum
+  /eth/create-wallet:
+    post:
+      consumes:
+      - application/json
+      description: Create a new Ethereum wallet and return the address and private
+        key
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Create a new Ethereum wallet
+      tags:
+      - ethereum
+  /eth/gas-balance:
+    get:
+      consumes:
+      - application/json
+      description: Get the gas (ETH) balance of a specified address
+      parameters:
+      - description: Ethereum address
+        in: query
+        name: address
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Get the gas balance of an address
+      tags:
+      - ethereum
+  /eth/multi-sig-transfer:
+    post:
+      consumes:
+      - application/json
+      description: Perform a multi-signature transfer of Ethereum
+      parameters:
+      - description: Multi-signature transfer details
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/services.MultiSigTransferRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Perform a multi-signature transfer
+      tags:
+      - ethereum
+  /eth/token-supply:
+    get:
+      consumes:
+      - application/json
+      description: Get the total supply of a specified ERC20 token
+      parameters:
+      - description: Token contract address
+        in: query
+        name: address
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Get the total supply of a token
+      tags:
+      - ethereum
+  /eth/withdraw:
+    post:
+      consumes:
+      - application/json
+      description: Withdraw tokens from the service to a specified address
+      parameters:
+      - description: Withdrawal details
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/services.WithdrawRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Withdraw tokens
+      tags:
+      - ethereum
+swagger: "2.0"
