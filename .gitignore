@@ -1,3 +1,42 @@
-# Golang files
-/bin/
+# Compiled object files
+*.o
+*.a
+
+# Executables
 *.exe
+*.out
+*.nexe
+*.so
+
+# Compiled assembly
+*.s
+
+# Plugin files
+*.dll
+
+# Test and coverage files
+*_test.*
+cover.out
+
+# Directory for storing downloaded dependencies
+vendor/
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.idea
+*.iml
+*.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# Miscellanea
+*.out
+*.log
+*.gid
+*.bak
+*.tmp
+*.swp
+*~
